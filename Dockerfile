@@ -1,7 +1,7 @@
 FROM centos:7
 
 RUN yum install epel-release -y && \
-    yum install nginx gettext -y && \
+    yum install nginx gettext httpd-tools -y && \
     yum clean all && \
     mkdir -p /usr/share/nginx/html
 
