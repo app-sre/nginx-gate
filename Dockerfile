@@ -1,4 +1,4 @@
-FROM quay.io/app-sre/centos:7
+FROM quay.io/centos/centos:7
 
 RUN yum install epel-release -y && \
     yum install nginx gettext httpd-tools -y && \
