@@ -29,3 +29,5 @@ $ docker run --rm -it -e BASIC_AUTH_USERNAME='foo' -e BASIC_AUTH_PASSWORD='bar' 
 
 Note: When provided, `BASIC_AUTH_USERNAME` and `BASIC_AUTH_PASSWORD` will
 have precedence over the `HTPASSWD` environment variable.
+
+To disable authentication for the pod, use the env variable `BASIC_AUTH_DISABLE=true`
