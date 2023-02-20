@@ -8,4 +8,11 @@
 envsubst '$${FORWARD_HOST} $${LISTEN_PORT}' < nginx.conf > /tmp/nginx.conf
 envsubst < auth.htpasswd > /tmp/auth.htpasswd
 
+if [ "${BASIC_AUTH_DISABLE}" = "true" ]
+then
+    grep -v "auth_basic" /tmp/nginx.conf > /tmp/nginx_authless.conf
+    rm /tmp/nginx.conf
+    mv /tmp/nginx_authless.conf /tmp/nginx.conf
+fi
+
 nginx -c /tmp/nginx.conf
