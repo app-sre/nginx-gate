@@ -13,6 +13,10 @@ build:
 	@docker build -t $(IMAGE_NAME):latest .
 	@docker tag $(IMAGE_NAME):latest $(IMAGE_NAME):$(IMAGE_TAG)
 
+# For local testing purposes
+compose:
+	@docker compose up --build
+
 push:
 	@docker --config=$(DOCKER_CONF) push $(IMAGE_NAME):latest
 	@docker --config=$(DOCKER_CONF) push $(IMAGE_NAME):$(IMAGE_TAG)
