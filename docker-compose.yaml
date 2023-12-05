@@ -1,0 +1,36 @@
+---
+services:
+    nginx-gate-auth:
+        build: .
+        ports:
+        - "8081:8080"
+        links:
+        - test-host
+        environment:
+        - "FORWARD_HOST=test-host:80"
+        - "LISTEN_PORT=8080"
+        - "METRICS_PATH=/metrics"
+    nginx-gate-no-auth:
+        build: .
+        ports:
+        - "8082:8080"
+        links:
+        - test-host
+        environment:
+        - "FORWARD_HOST=test-host:80"
+        - "LISTEN_PORT=8080"
+        - "METRICS_PATH=/metrics"
+        - "BASIC_AUTH_DISABLE=true"
+    nginx-gate-no-metrics:
+        build: .
+        ports:
+        - "8083:8080"
+        links:
+        - test-host
+        environment:
+        - "FORWARD_HOST=test-host:80"
+        - "LISTEN_PORT=8080"
+    test-host:
+        image: nginx:stable-alpine3.17-slim
+        ports:
+        - 80

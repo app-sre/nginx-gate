@@ -31,3 +31,18 @@ Note: When provided, `BASIC_AUTH_USERNAME` and `BASIC_AUTH_PASSWORD` will
 have precedence over the `HTPASSWD` environment variable.
 
 To disable authentication for the pod, use the env variable `BASIC_AUTH_DISABLE=true`
+
+## Metrics
+
+We allow an optional `METRICS_PATH` which will allow unauthenticated querying.
+This can be useful to easily expose metrics for prometheus.
+
+## Local Testing
+
+A docker compose stack is provided that can be used to verify paths are forwarded as expected.
+The compose stack starts multiple config flavors of the gate in parallel on different ports.
+
+```
+make compose
+```
+
