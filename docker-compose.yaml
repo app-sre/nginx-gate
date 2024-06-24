@@ -13,8 +13,8 @@ services:
         - "LISTEN_PORT=8080"
         - "METRICS_PATH=/metrics"
         volumes:
-        - data:/tmp
-        - data:/var/cache/nginx
+        - tmp:/tmp
+        - cache:/var/cache/nginx
     nginx-gate-no-auth:
         build: .
         ports:
@@ -29,8 +29,8 @@ services:
         - "METRICS_PATH=/metrics"
         - "BASIC_AUTH_DISABLE=true"
         volumes:
-        - data:/tmp
-        - data:/var/cache/nginx
+        - tmp:/tmp
+        - cache:/var/cache/nginx
     nginx-gate-no-metrics:
         build: .
         ports:
@@ -43,8 +43,8 @@ services:
         - "FORWARD_HOST=172.20.0.1:4000"
         - "LISTEN_PORT=8080"
         volumes:
-        - data:/tmp
-        - data:/var/cache/nginx
+        - tmp:/tmp
+        - cache:/var/cache/nginx
     test-host:
         image: nginx:stable-alpine3.17-slim
         networks:
@@ -53,7 +53,8 @@ services:
         - 80
 
 volumes:
-    data:
+    tmp:
+    cache:
 
 networks:
   nginx_gate_network:
