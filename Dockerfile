@@ -11,10 +11,10 @@ RUN yum install epel-release -y && \
 COPY nginx.conf auth.htpasswd docker-entrypoint.sh ./
 
 USER root
-RUN chmod 777 /docker-entrypoint.sh
-RUN chmod 777 /run /var/log/nginx
-RUN chmod -R 777 /var/lib/nginx
-RUN chmod -R 777 /var/cache/nginx
+RUN chmod 777 /docker-entrypoint.sh && \
+    chmod 777 /run /var/log/nginx && \
+    chmod -R 777 /var/lib/nginx && \
+    chmod -R 777 /var/cache/nginx
 
 VOLUME /tmp
 VOLUME /var/cache/nginx
