@@ -1,17 +1,13 @@
-FROM quay.io/centos/centos:7
+FROM ubi9/nginx-120
 
+USER root
 
-RUN yum install epel-release -y && \
-    yum install nginx gettext httpd-tools -y && \
-    yum clean all && \
-    mkdir -p /usr/share/nginx/html && \
+RUN mkdir -p /usr/share/nginx/html && \
     mkdir -p /var/cache/nginx
-
 
 COPY nginx.conf auth.htpasswd docker-entrypoint.sh ./
 
-USER root
-RUN chmod 777 /docker-entrypoint.sh && \
+RUN chmod 777 ./docker-entrypoint.sh && \
     chmod 777 /run /var/log/nginx && \
     chmod -R 777 /var/lib/nginx && \
     chmod -R 777 /var/cache/nginx
