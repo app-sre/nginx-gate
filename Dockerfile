@@ -7,7 +7,7 @@ RUN mkdir -p /usr/share/nginx/html && \
 
 COPY nginx.conf auth.htpasswd container-entrypoint.sh ./
 
-RUN chmod 777 ./docker-entrypoint.sh && \
+RUN chmod 777 ./container-entrypoint.sh && \
     chmod 777 /run /var/log/nginx && \
     chmod -R 777 /var/lib/nginx && \
     chmod -R 777 /var/cache/nginx
