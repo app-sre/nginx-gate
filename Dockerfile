@@ -1,4 +1,4 @@
-FROM quay.io/centos/centos:7
+FROM quay.io/centos/centos:8
 
 
 RUN yum install epel-release -y && \
