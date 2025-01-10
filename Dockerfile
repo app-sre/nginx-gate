@@ -1,4 +1,4 @@
-FROM ubi9/nginx-120
+FROM registry.access.redhat.com/ubi9/nginx-120
 
 USER root
 
