@@ -7,6 +7,10 @@ RUN mkdir -p /usr/share/nginx/html && \
 
 COPY nginx.conf auth.htpasswd container-entrypoint.sh ./
 
+RUN dnf install -y httpd-tools \
+    && dnf clean all \
+    && rm -rf /var/cache/yum
+
 RUN chmod 777 ./container-entrypoint.sh && \
     chmod 777 /run /var/log/nginx && \
     chmod -R 777 /var/lib/nginx && \
