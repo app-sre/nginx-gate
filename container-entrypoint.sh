@@ -16,6 +16,8 @@
 
 [ -z "$PROXY_BUFFER_SIZE" ] && export PROXY_BUFFER_SIZE=16k
 
+[ -z "$CLIENT_BODY_BUFFER_SIZE" ] && export CLIENT_BODY_BUFFER_SIZE=1m
+
 [ ! -z "${BASIC_AUTH_USERNAME}" ] && [ ! -z "${BASIC_AUTH_PASSWORD}" ] && \
     export HTPASSWD=$(htpasswd -bn "${BASIC_AUTH_USERNAME}" "${BASIC_AUTH_PASSWORD}")
 
