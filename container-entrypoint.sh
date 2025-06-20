@@ -21,7 +21,7 @@
 [ ! -z "${BASIC_AUTH_USERNAME}" ] && [ ! -z "${BASIC_AUTH_PASSWORD}" ] && \
     export HTPASSWD=$(htpasswd -bn "${BASIC_AUTH_USERNAME}" "${BASIC_AUTH_PASSWORD}")
 
-envsubst '$${FORWARD_HOST} $${LISTEN_PORT} $${METRICS_PATH} $${CACHE_MAX_SIZE} $${CACHE_TTL} $${CACHE_KEYS_ZONE_SIZE} $${CACHE_KEY_INACTIVE_TIME} $${PROXY_BUFFERS_NUMBER} $${PROXY_BUFFERS_SIZE} $${PROXY_BUFFER_SIZE}' < nginx.conf > /tmp/nginx.conf
+envsubst '$${FORWARD_HOST} $${LISTEN_PORT} $${METRICS_PATH} $${CACHE_MAX_SIZE} $${CACHE_TTL} $${CACHE_KEYS_ZONE_SIZE} $${CACHE_KEY_INACTIVE_TIME} $${PROXY_BUFFERS_NUMBER} $${PROXY_BUFFERS_SIZE} $${PROXY_BUFFER_SIZE} $${CLIENT_BODY_BUFFER_SIZE}' < nginx.conf > /tmp/nginx.conf
 envsubst < auth.htpasswd > /tmp/auth.htpasswd
 
 if [ "${BASIC_AUTH_DISABLE}" = "true" ]
